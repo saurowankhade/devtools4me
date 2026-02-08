@@ -37,11 +37,6 @@ code,
   font-family: var(--font-ibm-plex-mono, 'Courier New', monospace) !important;
 }
 
-/* Grid Dot Background Pattern */
-.grid-dot {
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
 
 /* Text Selection Styling */
 ::selection {
