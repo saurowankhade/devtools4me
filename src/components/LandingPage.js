@@ -139,22 +139,12 @@ export default function DevTools4MeLanding() {
 
   return (
     <div className="min-h-screen w-full bg-zinc-950 text-zinc-100 overflow-x-hidden">
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap');
-        * { font-family: 'Instrument Sans', sans-serif; box-sizing: border-box; }
-        code, .font-mono { font-family: 'IBM Plex Mono', monospace !important; }
-        .grid-dot { background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 32px 32px; }
-        ::selection { background: rgba(52, 211, 153, 0.2); color: #34d399; }
-        body { background: #09090b; margin: 0; }
-        input::placeholder { color: #3f3f46; }
-      `}</style>
-
       {/* ====== NAV ====== */}
       <nav className="sticky top-0 z-50 w-full border-b border-zinc-800/60 bg-zinc-950/80 backdrop-blur-xl">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <Link href='/' className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-md bg-emerald-950 border border-emerald-800/50 flex items-center justify-center text-emerald-400 text-xs font-extrabold font-mono">
-            <Image src='/favicon.png' alt="Logo" width={28} height={28} />
+            <Image src='/favicon.png' alt="devtools4me Logo" width={28} height={28} priority />
             </div>
             <span className="text-sm font-bold tracking-tight text-zinc-100">devtools4me</span>
           </Link>
@@ -282,7 +272,88 @@ export default function DevTools4MeLanding() {
         </div>
       </section>
 
-  
+      {/* ====== FAQ SECTION ====== */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+        <div className="text-center mb-10 sm:mb-12">
+          <span className="block text-xs font-bold tracking-widest uppercase text-emerald-400 font-mono mb-2">FAQ</span>
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-zinc-100 mb-2">
+            Questions You Might Have
+          </h2>
+          <p className="text-xs sm:text-sm text-zinc-500 max-w-2xl mx-auto">
+            Everything you need to know about devtools4me and how we keep your data safe.
+          </p>
+        </div>
+
+        <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4">
+          {/* FAQ Item 1 */}
+          <details className="group rounded-2xl bg-zinc-950 border border-zinc-800/50 hover:border-zinc-700/60 transition-all overflow-hidden">
+            <summary className="cursor-pointer list-none px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
+              <h3 className="text-sm sm:text-base font-bold text-zinc-100 pr-4">
+                Is devtools4me free to use?
+              </h3>
+              <span className="shrink-0 w-6 h-6 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 text-xs font-bold transition-transform group-open:rotate-180">
+                ↓
+              </span>
+            </summary>
+            <div className="px-5 sm:px-6 pb-4 sm:pb-5 pt-0">
+              <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
+                Yes, all tools on devtools4me are completely free to use. No sign-ups, no subscriptions, no hidden fees.
+              </p>
+            </div>
+          </details>
+
+          {/* FAQ Item 2 */}
+          <details className="group rounded-2xl bg-zinc-950 border border-zinc-800/50 hover:border-zinc-700/60 transition-all overflow-hidden">
+            <summary className="cursor-pointer list-none px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
+              <h3 className="text-sm sm:text-base font-bold text-zinc-100 pr-4">
+                Is my data safe?
+              </h3>
+              <span className="shrink-0 w-6 h-6 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 text-xs font-bold transition-transform group-open:rotate-180">
+                ↓
+              </span>
+            </summary>
+            <div className="px-5 sm:px-6 pb-4 sm:pb-5 pt-0">
+              <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
+                Absolutely. Every tool runs locally in your browser. Nothing is uploaded, stored, or logged. Your data never leaves your machine.
+              </p>
+            </div>
+          </details>
+
+          {/* FAQ Item 3 */}
+          <details className="group rounded-2xl bg-zinc-950 border border-zinc-800/50 hover:border-zinc-700/60 transition-all overflow-hidden">
+            <summary className="cursor-pointer list-none px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
+              <h3 className="text-sm sm:text-base font-bold text-zinc-100 pr-4">
+                Do I need to create an account?
+              </h3>
+              <span className="shrink-0 w-6 h-6 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 text-xs font-bold transition-transform group-open:rotate-180">
+                ↓
+              </span>
+            </summary>
+            <div className="px-5 sm:px-6 pb-4 sm:pb-5 pt-0">
+              <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
+                No account needed. Just open any tool and start working immediately.
+              </p>
+            </div>
+          </details>
+
+          {/* FAQ Item 4 */}
+          <details className="group rounded-2xl bg-zinc-950 border border-zinc-800/50 hover:border-zinc-700/60 transition-all overflow-hidden">
+            <summary className="cursor-pointer list-none px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
+              <h3 className="text-sm sm:text-base font-bold text-zinc-100 pr-4">
+                Are there any ads?
+              </h3>
+              <span className="shrink-0 w-6 h-6 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 text-xs font-bold transition-transform group-open:rotate-180">
+                ↓
+              </span>
+            </summary>
+            <div className="px-5 sm:px-6 pb-4 sm:pb-5 pt-0">
+              <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
+                No advertisements. No cookie banners. No tracking. Just clean, distraction-free tools.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
 
       {/* ====== NEWSLETTER ====== */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-20 text-center">
@@ -326,7 +397,7 @@ export default function DevTools4MeLanding() {
           <div className="flex items-center gap-2">
           <Link href='/' className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-md bg-emerald-950 border border-emerald-800/50 flex items-center justify-center text-emerald-400 text-xs font-extrabold font-mono">
-            <Image src='/favicon.png' alt="Logo" width={28} height={28} />
+            <Image src='/favicon.png' alt="devtools4me Logo" width={28} height={28} />
             </div>
             <span className="text-sm font-bold tracking-tight text-zinc-600">devtools4me</span>
           </Link>
