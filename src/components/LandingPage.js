@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import FAQSection from "./FAQSection";
+import NewsletterSection from "./NewsletterSection";
+import { PROJECT_GITHUB_LINK, SOCIAL_LINKS } from "@/utils/constants";
 
 const TOOLS = [
 
@@ -125,17 +128,8 @@ function ToolCard({ tool }) {
 
 export default function DevTools4MeLanding() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
 
   const filtered = activeCategory === "All" ? TOOLS : TOOLS.filter(t => t.category === activeCategory);
-
-  const handleSubscribe = () => {
-    if (email.includes("@")) {
-      setSubscribed(true);
-      setEmail("");
-    }
-  };
 
   return (
     <div className="min-h-screen w-full bg-zinc-950 text-zinc-100 overflow-x-hidden">
@@ -151,7 +145,7 @@ export default function DevTools4MeLanding() {
           <div className="flex items-center gap-3 sm:gap-5">
             <a href="#tools" className="hidden sm:block text-xs font-medium font-mono text-zinc-500 hover:text-zinc-300 transition-colors">Tools</a>
             <a href="#why" className="hidden sm:block text-xs font-medium font-mono text-zinc-500 hover:text-zinc-300 transition-colors">About</a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-medium font-mono text-zinc-500 hover:text-zinc-300 transition-colors">
+            <a href={PROJECT_GITHUB_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-medium font-mono text-zinc-500 hover:text-zinc-300 transition-colors">
               <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               <span className="hidden sm:inline">GitHub</span>
             </a>
@@ -160,12 +154,8 @@ export default function DevTools4MeLanding() {
       </nav>
 
       {/* ====== HERO ====== */}
-      <header className="grid-dot relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 lg:pt-24 pb-14 sm:pb-20 text-center">
-
-        
-
-       
+      <header className="relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-14 sm:pt-20 lg:pt-30 pb-14 sm:pb-20 text-center">       
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight sm:leading-none mb-4 sm:mb-5 max-w-3xl mx-auto">
           The Developer Toolkit You&apos;ll Actually Bookmark
           </h1>
@@ -187,14 +177,14 @@ export default function DevTools4MeLanding() {
       </header>
 
       {/* ====== TOOLS ====== */}
-      <section id="tools" className="max-w-5xl mx-auto px-4 sm:px-6 pt-10 sm:pt-16 pb-14 sm:pb-20">
+      <section id="tools" className="max-w-5xl mx-auto px-4 sm:px-6 pb-14 sm:pb-20">
 
-        <div className="mb-6 sm:mb-8">
+        <div className="mb-6 sm:mb-8 flex flex-col items-center justify-center">
           <span className="block text-xs font-bold tracking-widest uppercase text-emerald-400 font-mono mb-2">Tools</span>
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-zinc-100 mb-2">
             Ship Faster with the Right Tool at Hand
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-500 max-w-lg">
+          <p className="text-xs sm:text-sm text-zinc-500 max-w-lg text-center">
             A growing collection of free browser-based developer utilities. Format code, generate assets, convert data, and check accessibility — without leaving your browser or compromising your data.
           </p>
         </div>
@@ -273,121 +263,10 @@ export default function DevTools4MeLanding() {
       </section>
 
       {/* ====== FAQ SECTION ====== */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
-        <div className="text-center mb-10 sm:mb-12">
-          <span className="block text-xs font-bold tracking-widest uppercase text-emerald-400 font-mono mb-2">FAQ</span>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-zinc-100 mb-2">
-            Questions You Might Have
-          </h2>
-          <p className="text-xs sm:text-sm text-zinc-500 max-w-2xl mx-auto">
-            Everything you need to know about devtools4me and how we keep your data safe.
-          </p>
-        </div>
-
-        <div className="max-w-3xl mx-auto space-y-3 sm:space-y-4">
-          {/* FAQ Item 1 */}
-          <details className="group rounded-2xl bg-zinc-950 border border-zinc-800/50 hover:border-zinc-700/60 transition-all overflow-hidden">
-            <summary className="cursor-pointer list-none px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
-              <h3 className="text-sm sm:text-base font-bold text-zinc-100 pr-4">
-                Is devtools4me free to use?
-              </h3>
-              <span className="shrink-0 w-6 h-6 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 text-xs font-bold transition-transform group-open:rotate-180">
-                ↓
-              </span>
-            </summary>
-            <div className="px-5 sm:px-6 pb-4 sm:pb-5 pt-0">
-              <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
-                Yes, all tools on devtools4me are completely free to use. No sign-ups, no subscriptions, no hidden fees.
-              </p>
-            </div>
-          </details>
-
-          {/* FAQ Item 2 */}
-          <details className="group rounded-2xl bg-zinc-950 border border-zinc-800/50 hover:border-zinc-700/60 transition-all overflow-hidden">
-            <summary className="cursor-pointer list-none px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
-              <h3 className="text-sm sm:text-base font-bold text-zinc-100 pr-4">
-                Is my data safe?
-              </h3>
-              <span className="shrink-0 w-6 h-6 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 text-xs font-bold transition-transform group-open:rotate-180">
-                ↓
-              </span>
-            </summary>
-            <div className="px-5 sm:px-6 pb-4 sm:pb-5 pt-0">
-              <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
-                Absolutely. Every tool runs locally in your browser. Nothing is uploaded, stored, or logged. Your data never leaves your machine.
-              </p>
-            </div>
-          </details>
-
-          {/* FAQ Item 3 */}
-          <details className="group rounded-2xl bg-zinc-950 border border-zinc-800/50 hover:border-zinc-700/60 transition-all overflow-hidden">
-            <summary className="cursor-pointer list-none px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
-              <h3 className="text-sm sm:text-base font-bold text-zinc-100 pr-4">
-                Do I need to create an account?
-              </h3>
-              <span className="shrink-0 w-6 h-6 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 text-xs font-bold transition-transform group-open:rotate-180">
-                ↓
-              </span>
-            </summary>
-            <div className="px-5 sm:px-6 pb-4 sm:pb-5 pt-0">
-              <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
-                No account needed. Just open any tool and start working immediately.
-              </p>
-            </div>
-          </details>
-
-          {/* FAQ Item 4 */}
-          <details className="group rounded-2xl bg-zinc-950 border border-zinc-800/50 hover:border-zinc-700/60 transition-all overflow-hidden">
-            <summary className="cursor-pointer list-none px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
-              <h3 className="text-sm sm:text-base font-bold text-zinc-100 pr-4">
-                Are there any ads?
-              </h3>
-              <span className="shrink-0 w-6 h-6 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 text-xs font-bold transition-transform group-open:rotate-180">
-                ↓
-              </span>
-            </summary>
-            <div className="px-5 sm:px-6 pb-4 sm:pb-5 pt-0">
-              <p className="text-xs sm:text-sm text-zinc-500 leading-relaxed">
-                No advertisements. No cookie banners. No tracking. Just clean, distraction-free tools.
-              </p>
-            </div>
-          </details>
-        </div>
-      </section>
+      <FAQSection />
 
       {/* ====== NEWSLETTER ====== */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-20 text-center">
-        <span className="block text-xs font-bold tracking-widest uppercase text-emerald-400 font-mono mb-2">Stay Updated</span>
-        <h2 className="text-lg sm:text-2xl font-bold tracking-tight text-zinc-100 mb-2">
-          New Tools Drop Every Two Weeks
-        </h2>
-        <p className="text-xs sm:text-sm text-zinc-500 mb-6 sm:mb-8 max-w-md mx-auto">
-        The next tool on our list might be the one you&apos;ve been Googling for. Get a short email when it ships.
-        </p>
-
-        {subscribed ? (
-          <div className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-950 border border-emerald-800/60 text-emerald-400 text-sm font-semibold font-mono">
-            <span>✓</span> Thanks for trusting us! You&apos;ll be the first to know when something new drops.
-          </div>
-        ) : (
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2 max-w-md mx-auto px-2 sm:px-0">
-            <input
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              onKeyDown={e => e.key === "Enter" && handleSubscribe()}
-              placeholder="you@company.com"
-              className="w-full sm:flex-1 px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-100 text-sm font-mono outline-none focus:border-zinc-700 transition-colors"
-            />
-            <button
-              onClick={handleSubscribe}
-              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-950 border border-emerald-800/60 text-emerald-400 text-sm font-semibold font-mono hover:bg-emerald-900/40 transition-colors whitespace-nowrap"
-            >
-              Notify Me →
-            </button>
-          </div>
-        )}
-      </section>
+      <NewsletterSection />
 
      
     
@@ -407,10 +286,13 @@ export default function DevTools4MeLanding() {
           </div>
           <div className="flex items-center gap-4 sm:gap-5">
           
-              <a  href="https://peerlist.io/saurowankhade" className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors">
+              <a  href={SOCIAL_LINKS.peerlist} className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors">
                Peerlist
               </a>
-              <a  href="https://github.com/saurowankhade" className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors">
+              <a  href={SOCIAL_LINKS.twitter} className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors">
+              Twitter/X
+              </a>
+              <a  href={SOCIAL_LINKS.github} className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors">
                 Github
               </a>
              
